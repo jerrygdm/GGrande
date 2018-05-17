@@ -41,7 +41,7 @@ function handleError(res, reason, message, code) {
    *    POST: creates a new contact
    */
   
-  app.get("/api/contacts", function(req, res) {
+  app.get("/api/users", function(req, res) {
     db.collection(USERS_COLLECTION).find({}).toArray(function(err, docs) {
       if (err) {
         handleError(res, err.message, "Failed to get contacts.");
@@ -51,7 +51,7 @@ function handleError(res, reason, message, code) {
     });
   });
   
-  app.post("/api/contacts", function(req, res) {
+  app.post("/api/users", function(req, res) {
     var newContact = req.body;
   
     if (!req.body.name) {
@@ -73,11 +73,11 @@ function handleError(res, reason, message, code) {
    *    DELETE: deletes contact by id
    */
   
-  app.get("/api/contacts/:id", function(req, res) {
+  app.get("/api/users/:id", function(req, res) {
   });
   
-  app.put("/api/contacts/:id", function(req, res) {
+  app.put("/api/users/:id", function(req, res) {
   });
   
-  app.delete("/api/contacts/:id", function(req, res) {
+  app.delete("/api/users/:id", function(req, res) {
   });
