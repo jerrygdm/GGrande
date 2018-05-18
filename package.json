@@ -8,8 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build -prod"
-  },
+    "ng": "ng",
+    "heroku-prebuild": "npm install -g http-server",
+    "heroku-postbuild": "ng build --prod",
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.0",
