@@ -1,11 +1,11 @@
-var express = require("express");
+const express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
-
+const path = require('path');
 var USERS_COLLECTION = "users";
 
-var app = express();
+const app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/dist'));
 app.listen(process.env.PORT || 8080);
@@ -25,11 +25,11 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:2701
   console.log("Database connection ready");
 
   // Initialize the app.
-  var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-  });
-});
+ app.listen(process.env.PORT || 8080);
+
+ app.get('/*', function(req, res) {
+   res.sendfile(path.join(__dirname + '/dist/index.html'));
+ })
 
 // CONTACTS API ROUTES BELOW
 // Generic error handler used by all endpoints.
