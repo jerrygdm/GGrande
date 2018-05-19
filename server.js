@@ -13,7 +13,7 @@ var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 app.get('/*', function(req,res) {
     
-  res.sendFile(path.join(__dirname+'/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/index.html'));
   });
   
   // Start the app by listening on the default Heroku port
