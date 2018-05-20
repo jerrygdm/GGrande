@@ -16,6 +16,10 @@ app.use(express.static(__dirname + '/dist'));
 // Heroku port
 app.listen(process.env.PORT || 8080);
 
+app.get("/", function(req, res) {
+  res.sendfile(path.join(__dirname + "/dist/index.html"));
+})
+
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
 
