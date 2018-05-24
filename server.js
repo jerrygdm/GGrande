@@ -9,16 +9,9 @@ var USERS_COLLECTION = "users";
 var app = express();
 app.use(bodyParser.json());
 
-// Run the app by serving the static files
-// in the dist directory
-app.use(express.static(__dirname + '/dist'));
-// Start the app by listening on the default
-// Heroku port
-app.listen(process.env.PORT || 8080);
-
-app.get("/", function(req, res) {
-  res.sendfile(path.join(__dirname + "/dist/index.html"));
-})
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
